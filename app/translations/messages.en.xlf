@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+       xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <!-- Titles -->
+      <trans-unit id="title.urlList">
+        <source>title.urlList</source>
+        <target>List of URLs</target>
+      </trans-unit>
+      <trans-unit id="title.urlDetails">
+        <source>title.urlDetails</source>
+        <target>Details for URL #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.tagList">
+        <source>title.tagList</source>
+        <target>List of tags</target>
+      </trans-unit>
+      <trans-unit id="title.tagDelete">
+        <source>title.tagDelete</source>
+        <target>Delete tag #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.tagEdit">
+        <source>title.tagEdit</source>
+        <target>Edit tag #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.tagCreate">
+        <source>title.tagCreate</source>
+        <target>Create a new tag</target>
+      </trans-unit>
+      <trans-unit id="title.tagDetails">
+        <source>title.tagDetails</source>
+        <target>Tag #%id% details</target>
+      </trans-unit>
+      <trans-unit id="title.urlCreate">
+        <source>title.urlCreate</source>
+        <target>Create new URL</target>
+      </trans-unit>
+
+      <!-- Labels -->
+      <trans-unit id="label.id">
+        <source>label.id</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="label.createdAt">
+        <source>label.createdAt</source>
+        <target>Created at</target>
+      </trans-unit>
+      <trans-unit id="label.title">
+        <source>label.title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="label.updatedAt">
+        <source>label.updatedAt</source>
+        <target>Updated at</target>
+      </trans-unit>
+      <trans-unit id="label.originalUrl">
+        <source>label.originalUrl</source>
+        <target>Original URL</target>
+      </trans-unit>
+      <trans-unit id="label.shortCode">
+        <source>label.shortCode</source>
+        <target>Short Code</target>
+      </trans-unit>
+      <trans-unit id="label.actions">
+        <source>label.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="label.tags">
+        <source>label.tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="label.urls">
+        <source>label.urls</source>
+        <target>Urls with tag %title%</target>
+      </trans-unit>
+      <trans-unit id="label.author">
+        <source>label.author</source>
+        <target>Author</target>
+      </trans-unit>
+
+      <!-- Actions -->
+      <trans-unit id="action.view">
+        <source>action.view</source>
+        <target>View</target>
+      </trans-unit>
+      <trans-unit id="action.backToList">
+        <source>action.backToList</source>
+        <target>Back to list</target>
+      </trans-unit>
+      <trans-unit id="action.delete">
+        <source>action.delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="action.edit">
+        <source>action.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="action.save">
+        <source>action.save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="action.addNewTag">
+        <source>action.addNewTag</source>
+        <target>Add new Tag</target>
+      </trans-unit>
+      <trans-unit id="action.addNewUrl">
+        <source>action.addNewUrl</source>
+        <target>Add new Url</target>
+      </trans-unit>
+
+      <!-- Messages -->
+      <trans-unit id="message.emptyList">
+        <source>message.emptyList</source>
+        <target>No URLs found.</target>
+      </trans-unit>
+      <trans-unit id="message.recordNotFound">
+        <source>message.recordNotFound</source>
+        <target>URL not found.</target>
+      </trans-unit>
+      <trans-unit id="message.createdSuccessfully">
+        <source>message.createdSuccessfully</source>
+        <target>Created successfully.</target>
+      </trans-unit>
+      <trans-unit id="message.editedSuccessfully">
+        <source>message.editedSuccessfully</source>
+        <target>Edited successfully.</target>
+      </trans-unit>
+      <trans-unit id="message.deletedSuccessfully">
+        <source>message.deletedSuccessfully</source>
+        <target>Deleted successfully.</target>
+      </trans-unit>
+
+      <!-- Menu -->
+      <trans-unit id="menu.urls">
+        <source>menu.urls</source>
+        <target>URLs</target>
+      </trans-unit>
+      <trans-unit id="menu.tags">
+        <source>menu.tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="menu.hi">
+        <source>menu.hi</source>
+        <target>Hi, %email%!</target>
+      </trans-unit>
+      <trans-unit id="menu.logout">
+        <source>menu.logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="menu.login">
+        <source>menu.login</source>
+        <target>Login</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
