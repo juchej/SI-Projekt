@@ -1,0 +1,52 @@
+{#
+Default template for forms.
+
+parameters:
+    - page_title: page title
+    - form: form view variable
+    - submit_label: label for submit button
+    - back_to_list_path: route name for the back button (optional)
+#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ page_title }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ page_title }}</h1>
+
+    {{ form_start(form) }}
+
+    {% if false == form.vars.valid %}
+        {% include 'default/_single_alert_message.html.twig' with {
+            type: 'danger',
+            message: 'message.formError'|trans,
+        } %}
+    {% endif %}
+
+    {# Ręczne renderowanie wszystkich pól (pomijając _token) #}
+    {% for field in form %}
+        {% if field.vars.name != '_token' %}
+            {{ form_row(field) }}
+        {% endif %}
+    {% endfor %}
+
+    <div class="form-group row mt-3">
+        <div class="col">
+            <input type="submit" value="{{ submit_label }}" class="btn btn-primary float-end"/>
+        </div>
+
+        {% if back_to_list_path|default(false) %}
+            <div class="col-auto">
+                <a href="{{ url(back_to_list_path) }}" class="btn btn-link">
+                    {{ 'action.backToList'|trans }}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endblock %}

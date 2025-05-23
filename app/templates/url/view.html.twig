@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.urlDetails'|trans({'%id%': url.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.urlDetails'|trans({'%id%': url.id|default('')}) }}</h1>
+    {% if url is defined and url|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label.id'|trans }}</dt>
+            <dd>{{ url.id }}</dd>
+            <dt>{{ 'label.createdAt'|trans }}</dt>
+            <td>{{ url.createdAt|format_date('long') }}</td>
+            <dt>{{ 'label.updatedAt'|trans }}</dt>
+            <td>{{ url.updatedAt|format_date('long') }}</td>
+            <dt>{{ 'label.originalUrl'|trans }}</dt>
+            <td><a href="{{ url.originalUrl }}">{{ url.originalUrl }}</a></td>
+            <dt>{{ 'label.shortCode'|trans }}</dt>
+            <td>{{ url.shortCode }}</td>
+            <dt>{{ 'label.tags'|trans }}</dt>
+            <dd>{% for tag in url.tags %}
+                <a href="{{ url('tag_view', {id: tag.id}) }}" title="{{ 'action.view'|trans }}">
+                    {{ tag.title }}
+                    </a>{% if not loop.last %}, {% endif %}
+                {% endfor %}</dd>
+        </dl>
+        <p>
+            <a href="{{ url('url_index') }}" title="{{ 'action.back_to_list'|trans }}">
+                {{ 'action.backToList'|trans }}
+            </a>
+        </p>
+    {% else %}
+        <p>
+            {{ 'message.recordNotFound'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}
