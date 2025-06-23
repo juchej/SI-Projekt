@@ -1,0 +1,81 @@
+{# templates/user/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.userList'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.userList'|trans }}</h1>
+    {% if users is defined and users.items|length %}
+
+    <div class="navigation text-center">
+        {{ knp_pagination_render(users) }}
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>{{ 'label.username'|trans }}</th>
+            <th>{{ 'label.email'|trans }}</th>
+            <th>{{ 'label.additionalInformation'|trans }}</th>
+            <th>{{ 'label.actions'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>
+                    <a href="{{ url('user_view', {id: user.id}) }}" title="{{ 'action.view'|trans }}">
+                        {{ user.username }}</a>
+                </td>
+                <td>{{ user.email }}</td>
+                <td>{% for role in user.roles %}
+                        {% if role == 'ROLE_ADMIN' %}
+                            <span class="badge bg-primary">{{ 'label.roleAdmin'|trans }}</span>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if user.isBlocked %}
+                        <span class="badge bg-danger">{{ 'label.blocked'|trans }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if is_granted('USER_VIEW', user) %}
+                    <a href="{{ url('user_view', {id: user.id}) }}" class="btn btn-sm btn-outline-primary" title="{{ 'action.view'|trans }}">
+                        {{ 'action.view'|trans }}
+                    </a>
+                    {% endif %}
+                    {% if is_granted('USER_EDIT', user) %}
+                        <a href="{{ url('user_edit', {id: user.id}) }}" class="btn btn-sm btn-outline-secondary" title="{{ 'action.edit'|trans }}">
+                            {{ 'action.edit'|trans }}
+                        </a>
+                        <a href="{{ path('user_change_password', {id: user.id}) }}" class="btn btn-sm btn-outline-secondary" title="{{ 'action.edit'|trans }}">
+                            {{ 'action.changePassword'|trans }}
+                        </a>
+                    {% endif %}
+                    {% if is_granted('USER_BLOCK', user) %}
+                        {% if user.isBlocked %}
+                            <a href="{{ url('user_unblock', {id: user.id}) }}" class="btn btn-sm btn-outline-success" title="{{ 'action.unblock'|trans }}">
+                                {{ 'action.unblock'|trans }}
+                            </a>
+                        {% else %}
+                            <a href="{{ url('user_block', {id: user.id}) }}" class="btn btn-sm btn-outline-danger" title="{{ 'action.block'|trans }}">
+                                {{ 'action.block'|trans }}
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <div class="navigation text-center">
+            {{ knp_pagination_render(users) }}
+        </div>
+    {% else %}
+        <p>
+            {{ 'message.emptyList'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}

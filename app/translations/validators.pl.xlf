@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+       xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="pl" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="password.not_blank">
+        <source>password.not_blank</source>
+        <target>Hasło nie może być puste</target>
+      </trans-unit>
+      <trans-unit id="password.min_length">
+        <source>password.min_length</source>
+        <target>Hasło musi mieć przynajmniej {{ limit }} znaków długości</target>
+      </trans-unit>
+      <trans-unit id="message.invalidCurrentPassword">
+        <source>message.invalidCurrentPassword</source>
+        <target>Aktualne hasło jest nieprawidłowe</target>
+      </trans-unit>
+      <trans-unit id="message.passwordBlank">
+        <source>message.passwordBlank</source>
+        <target>Hasło nie może być puste</target>
+      </trans-unit>
+      <trans-unit id="message.passwordTooShort">
+        <source>message.passwordTooShort</source>
+        <target>Podane hasło jest za krótkie</target>
+      </trans-unit>
+      <trans-unit id="message.emailUsed">
+        <source>message.emailUsed</source>
+        <target>Istnieje konto z takim adresem e-mail</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

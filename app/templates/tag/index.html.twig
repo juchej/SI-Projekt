@@ -16,7 +16,7 @@
             <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'tag.id') }}</th>
-                <th>{{ 'label.title'|trans }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'tag.title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.createdAt'|trans, 'tag.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.updatedAt'|trans, 'tag.updatedAt') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
@@ -26,19 +26,24 @@
             {% for tag in pagination.items %}
                 <tr>
                     <td>{{ tag.id }}</td>
-                    <td>{{ tag.title }}</td>
+                    <td><a href="{{ url('tag_view', {id: tag.id}) }}">{{ tag.title }}</a>
+                    </td>
                     <td>{{ tag.createdAt|format_date('long') }}</td>
                     <td>{{ tag.updatedAt|format_date('long') }}</td>
                     <td>
                         <a href="{{ url('tag_view', {id: tag.id}) }}" class="btn btn-sm btn-outline-primary" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
                         </a>
+                        {% if is_granted('TAG_EDIT', tag) %}
                         <a href="{{ url('tag_edit', {id: tag.id}) }}" class="btn btn-sm btn-outline-secondary" title="{{ 'action.edit'|trans }}">
                             {{ 'action.edit'|trans }}
                         </a>
+                        {% endif %}
+                        {% if is_granted('TAG_DELETE', tag) %}
                         <a href="{{ url('tag_delete', {id: tag.id}) }}" class="btn btn-sm btn-outline-danger" title="{{ 'action.delete'|trans }}">
                             {{ 'action.delete'|trans }}
                         </a>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

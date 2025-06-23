@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+       xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="password.not_blank">
+        <source>password.not_blank</source>
+        <target>Password can't be blank</target>
+      </trans-unit>
+      <trans-unit id="password.min_length">
+        <source>password.min_length</source>
+        <target>Password must be at least {{ limit }} characters long</target>
+      </trans-unit>
+      <trans-unit id="message.invalidCurrentPassword">
+        <source>message.invalidCurrentPassword</source>
+        <target>Current password is invalid</target>
+      </trans-unit>
+      <trans-unit id="message.passwordBlank">
+        <source>message.passwordBlank</source>
+        <target>Password cannot be empty</target>
+      </trans-unit>
+      <trans-unit id="message.passwordTooShort">
+        <source>message.passwordTooShort</source>
+        <target>Password is too short</target>
+      </trans-unit>
+      <trans-unit id="message.emailUsed">
+        <source>message.emailUsed</source>
+        <target>There is already an account with this email</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

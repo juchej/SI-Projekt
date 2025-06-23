@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2"
+       xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="pl" datatype="plaintext" original="file.ext">
+    <body>
+      <!-- Titles -->
+      <trans-unit id="title.urlList">
+        <source>title.urlList</source>
+        <target>Lista adresów URLs</target>
+      </trans-unit>
+      <trans-unit id="title.urlDetails">
+        <source>title.urlDetails</source>
+        <target>Szczegóły adresu URL #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.tagList">
+        <source>title.tagList</source>
+        <target>Lista tagów</target>
+      </trans-unit>
+      <trans-unit id="title.tagDelete">
+        <source>title.tagDelete</source>
+        <target>Usuń tag #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.tagEdit">
+        <source>title.tagEdit</source>
+        <target>Edytuj tag #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.tagCreate">
+        <source>title.tagCreate</source>
+        <target>Stwórz nowy tag</target>
+      </trans-unit>
+      <trans-unit id="title.tagDetails">
+        <source>title.tagDetails</source>
+        <target>Szczegóły tagu #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.urlCreate">
+        <source>title.urlCreate</source>
+        <target>Skróć adres URL</target>
+      </trans-unit>
+      <trans-unit id="title.urlEdit">
+        <source>title.urlEdit</source>
+        <target>Edytuj adres URL #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.urlBlock">
+        <source>title.urlBlock</source>
+        <target>Zablokuj adres URL #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.urlDelete">
+        <source>title.urlDelete</source>
+        <target>Usuń adres URL #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.register">
+        <source>title.register</source>
+        <target>Zarejestruj się</target>
+      </trans-unit>
+      <trans-unit id="title.login">
+        <source>title.login</source>
+        <target>Zaloguj się</target>
+      </trans-unit>
+      <trans-unit id="title.userList">
+        <source>title.userList</source>
+        <target>Lista użytkowników</target>
+      </trans-unit>
+      <trans-unit id="title.userEdit">
+        <source>title.userEdit</source>
+        <target>Edytuj użytkownika #%id%: %username%</target>
+      </trans-unit>
+      <trans-unit id="title.userBlock">
+        <source>title.userBlock</source>
+        <target>Zablokuj użytkownika #%id%: %username%</target>
+      </trans-unit>
+      <trans-unit id="title.userUnblock">
+        <source>title.userUnblock</source>
+        <target>Odblokuj użytkownika #%id%: %username%</target>
+      </trans-unit>
+      <trans-unit id="title.urlUnblock">
+        <source>title.urlUnblock</source>
+        <target>Odblokuj adres URL #%id%</target>
+      </trans-unit>
+      <trans-unit id="title.topUrls">
+        <source>title.topUrls</source>
+        <target>10 najbardziej popularnych adresów URL</target>
+      </trans-unit>
+      <trans-unit id="title.latestUrls">
+        <source>title.latestUrls</source>
+        <target>10 najnowszych adresów URL</target>
+      </trans-unit>
+      <trans-unit id="title.changePassword">
+        <source>title.changePassword</source>
+        <target>Zmień hasło</target>
+      </trans-unit>
+      <trans-unit id="title.userMe">
+        <source>title.userMe</source>
+        <target>Moje konto</target>
+      </trans-unit>
+      <trans-unit id="title.yourUrls">
+        <source>title.yourUrls</source>
+        <target>Twoje adresy URL</target>
+      </trans-unit>
+      <trans-unit id="title.userDetails">
+        <source>title.userDetails</source>
+        <target>Szczegóły użytkownika</target>
+      </trans-unit>
+      <trans-unit id="title.changePasswordByAdmin">
+        <source>title.changePasswordByAdmin</source>
+        <target>Zmień hasło użytkownika #%id%: %username%</target>
+      </trans-unit>
+      <trans-unit id="title.urlUnpublishedList">
+        <source>title.urlUnpublishedList</source>
+        <target>Lista nieopublikowanych adresów URL</target>
+      </trans-unit>
+      <trans-unit id="title.urlSearch">
+        <source>title.urlSearch</source>
+        <target>Wyniki wyszukiwania: %query%</target>
+      </trans-unit>
+
+      <!-- Labels -->
+      <trans-unit id="label.id">
+        <source>label.id</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="label.createdAt">
+        <source>label.createdAt</source>
+        <target>Data utworzenia</target>
+      </trans-unit>
+      <trans-unit id="label.title">
+        <source>label.title</source>
+        <target>Tytuł</target>
+      </trans-unit>
+      <trans-unit id="label.updatedAt">
+        <source>label.updatedAt</source>
+        <target>Data aktualizacji</target>
+      </trans-unit>
+      <trans-unit id="label.originalUrl">
+        <source>label.originalUrl</source>
+        <target>Oryginalny adres URL</target>
+      </trans-unit>
+      <trans-unit id="label.shortCode">
+        <source>label.shortCode</source>
+        <target>Skrócony kod</target>
+      </trans-unit>
+      <trans-unit id="label.actions">
+        <source>label.actions</source>
+        <target>Akcje</target>
+      </trans-unit>
+      <trans-unit id="label.tags">
+        <source>label.tags</source>
+        <target>Tagi</target>
+      </trans-unit>
+      <trans-unit id="label.urls">
+        <source>label.urls</source>
+        <target>Adresy URL z tagiem %title%</target>
+      </trans-unit>
+      <trans-unit id="label.author">
+        <source>label.author</source>
+        <target>Autor</target>
+      </trans-unit>
+      <trans-unit id="label.email">
+        <source>label.email</source>
+        <target>E-mail</target>
+      </trans-unit>
+      <trans-unit id="label.username">
+        <source>label.username</source>
+        <target>Nazwa użytkownika</target>
+      </trans-unit>
+      <trans-unit id="label.password">
+        <source>label.password</source>
+        <target>Hasło</target>
+      </trans-unit>
+      <trans-unit id="label.repeatPassword">
+        <source>label.repeatPassword</source>
+        <target>Powtórz hasło</target>
+      </trans-unit>
+      <trans-unit id="label.anonymousUser">
+        <source>label.anonymousUser</source>
+        <target>Anonim</target>
+      </trans-unit>
+      <trans-unit id="label.additionalInformation">
+        <source>label.additionalInformation</source>
+        <target>Dodatkowe informacje</target>
+      </trans-unit>
+      <trans-unit id="label.roles">
+        <source>label.roles</source>
+        <target>Role</target>
+      </trans-unit>
+      <trans-unit id="label.clickCount">
+        <source>label.clickCount</source>
+        <target>Wizyty</target>
+      </trans-unit>
+      <trans-unit id="label.currentPassword">
+        <source>label.currentPassword</source>
+        <target>Aktualne hasło</target>
+      </trans-unit>
+      <trans-unit id="label.newPassword">
+        <source>label.newPassword</source>
+        <target>Nowe hasło</target>
+      </trans-unit>
+      <trans-unit id="label.blocked">
+        <source>label.blocked</source>
+        <target>Zablokowny</target>
+      </trans-unit>
+      <trans-unit id="label.active">
+        <source>label.active</source>
+        <target>Aktywny</target>
+      </trans-unit>
+      <trans-unit id="label.accountStatus">
+        <source>label.accountStatus</source>
+        <target>Status konta</target>
+      </trans-unit>
+      <trans-unit id="label.roleUser">
+        <source>label.roleUser</source>
+        <target>Użytkownik</target>
+      </trans-unit>
+      <trans-unit id="label.roleAdmin">
+        <source>label.roleAdmin</source>
+        <target>Admin</target>
+      </trans-unit>
+      <trans-unit id="label.permanentBlock">
+        <source>label.permanentBlock</source>
+        <target>Zablokuj permanentnie</target>
+      </trans-unit>
+      <trans-unit id="label.blockUntil">
+        <source>label.blockUntil</source>
+        <target>Zablokuj do</target>
+      </trans-unit>
+      <trans-unit id="label.blockedUntil">
+        <source>label.blockedUntil</source>
+        <target>Zablokowany do</target>
+      </trans-unit>
+      <trans-unit id="label.permanentlyBlocked">
+        <source>label.permanentlyBlocked</source>
+        <target>Zablokowany permanentnie</target>
+      </trans-unit>
+      <trans-unit id="label.isPublished">
+        <source>label.isPublished</source>
+        <target>Opublikowany</target>
+      </trans-unit>
+      <trans-unit id="label.unpublished">
+        <source>label.unpublished</source>
+        <target>Szkic</target>
+      </trans-unit>
+      <trans-unit id="label.search">
+        <source>label.search</source>
+        <target>Szukaj adresów URL</target>
+      </trans-unit>
+
+      <!-- Actions -->
+      <trans-unit id="action.view">
+        <source>action.view</source>
+        <target>Wyświetl</target>
+      </trans-unit>
+      <trans-unit id="action.backToList">
+        <source>action.backToList</source>
+        <target>Wróć do listy</target>
+      </trans-unit>
+      <trans-unit id="action.delete">
+        <source>action.delete</source>
+        <target>Usuń</target>
+      </trans-unit>
+      <trans-unit id="action.edit">
+        <source>action.edit</source>
+        <target>Edytuj</target>
+      </trans-unit>
+      <trans-unit id="action.save">
+        <source>action.save</source>
+        <target>Zapisz</target>
+      </trans-unit>
+      <trans-unit id="action.addNewTag">
+        <source>action.addNewTag</source>
+        <target>Dodaj nowy Tag</target>
+      </trans-unit>
+      <trans-unit id="action.addNewUrl">
+        <source>action.addNewUrl</source>
+        <target>Dodaj nowy adres URL</target>
+      </trans-unit>
+      <trans-unit id="action.register">
+        <source>action.register</source>
+        <target>Zarejestruj się</target>
+      </trans-unit>
+      <trans-unit id="action.block">
+        <source>action.block</source>
+        <target>Zablokuj</target>
+      </trans-unit>
+      <trans-unit id="action.unblock">
+        <source>action.unblock</source>
+        <target>Odblokuj</target>
+      </trans-unit>
+      <trans-unit id="action.changePassword">
+        <source>action.changePassword</source>
+        <target>Zmień hasło</target>
+      </trans-unit>
+      <trans-unit id="action.search">
+        <source>action.search</source>
+        <target>Szukaj</target>
+      </trans-unit>
+
+      <!-- Messages -->
+      <trans-unit id="message.emptyList">
+        <source>message.emptyList</source>
+        <target>Brak adresów URL.</target>
+      </trans-unit>
+      <trans-unit id="message.recordNotFound">
+        <source>message.recordNotFound</source>
+        <target>Nie znaleziono adresu URL.</target>
+      </trans-unit>
+      <trans-unit id="message.createdSuccessfully">
+        <source>message.createdSuccessfully</source>
+        <target>Stworzono pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.editedSuccessfully">
+        <source>message.editedSuccessfully</source>
+        <target>Edytowano pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.deletedSuccessfully">
+        <source>message.deletedSuccessfully</source>
+        <target>Usunięto pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.accessDenied">
+        <source>message.accessDenied</source>
+        <target>Brak dostępu.</target>
+      </trans-unit>
+      <trans-unit id="message.passwordChanged">
+        <source>message.passwordChanged</source>
+        <target>Hasło zmienione pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.profileUpdated">
+        <source>message.profileUpdated</source>
+        <target>Profil zaktualizowany pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.userBlocked">
+        <source>message.userBlocked</source>
+        <target>Użytkownik zablokowany pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.userUnblocked">
+        <source>message.userUnblocked</source>
+        <target>Użytkownik odblokowany pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.dailyLimitReached">
+        <source>message.dailyLimitReached</source>
+        <target>Dzienny limit dla niezalogowanych użytkowników został osiągnięty.</target>
+      </trans-unit>
+      <trans-unit id="message.accountBlocked">
+        <source>message.accountBlocked</source>
+        <target>Twoje konto jest zablokowane.</target>
+      </trans-unit>
+      <trans-unit id="message.registrationSuccessful">
+        <source>message.registrationSuccessful</source>
+        <target>Pomyślnie zarejestrowano.</target>
+      </trans-unit>
+      <trans-unit id="message.loggedInSuccessfully">
+        <source>message.loggedInSuccessfully</source>
+        <target>Zalogowano pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.urlBlockedSuccessfully">
+        <source>message.urlBlockedSuccessfully</source>
+        <target>Adres URL zablokowany pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.urlUnblocked">
+        <source>message.urlUnblocked</source>
+        <target>Adres URL odblokowany pomyślnie.</target>
+      </trans-unit>
+      <trans-unit id="message.urlBlocked">
+        <source>message.urlBlocked</source>
+        <target>Ten adres URL jest zablokowany.</target>
+      </trans-unit>
+      <trans-unit id="message.urlDoesNotExist">
+        <source>message.urlDoesNotExist</source>
+        <target>Ten adres URL nie istnieje.</target>
+      </trans-unit>
+      <trans-unit id="message.urlUnpublished">
+        <source>message.urlUnpublished</source>
+        <target>Ten adres URL nie został opublikowany.</target>
+      </trans-unit>
+      <trans-unit id="message.cannotBlockAdmin">
+        <source>message.cannotBlockAdmin</source>
+        <target>Admin nie może zostać zablokowany.</target>
+      </trans-unit>
+      <trans-unit id="message.lastAdmin">
+        <source>message.lastAdmin</source>
+        <target>Nie można usunąć ostatniego admina.</target>
+      </trans-unit>
+      <trans-unit id="message.urlUnavailable">
+        <source>message.urlUnavailable</source>
+        <target>Ten adres URL jest niedostępny.</target>
+      </trans-unit>
+
+      <!-- Menu -->
+      <trans-unit id="menu.urls">
+        <source>menu.urls</source>
+        <target>Adresy URL</target>
+      </trans-unit>
+      <trans-unit id="menu.tags">
+        <source>menu.tags</source>
+        <target>Tagi</target>
+      </trans-unit>
+      <trans-unit id="menu.hi">
+        <source>menu.hi</source>
+        <target>Cześć, %email%!</target>
+      </trans-unit>
+      <trans-unit id="menu.logout">
+        <source>menu.logout</source>
+        <target>Wyloguj się</target>
+      </trans-unit>
+      <trans-unit id="menu.login">
+        <source>menu.login</source>
+        <target>Zaloguj się</target>
+      </trans-unit>
+      <trans-unit id="menu.register">
+        <source>menu.register</source>
+        <target>Zarejestruj się</target>
+      </trans-unit>
+      <trans-unit id="menu.users">
+        <source>menu.users</source>
+        <target>Użytkownicy</target>
+      </trans-unit>
+      <trans-unit id="menu.account">
+        <source>menu.account</source>
+        <target>Moje konto</target>
+      </trans-unit>
+      <trans-unit id="menu.allUrls">
+        <source>menu.allUrls</source>
+        <target>Wszystkie adresy</target>
+      </trans-unit>
+      <trans-unit id="menu.mostPopular">
+        <source>menu.mostPopular</source>
+        <target>Najlpopularniejsze adresy</target>
+      </trans-unit>
+      <trans-unit id="menu.latest">
+        <source>menu.latest</source>
+        <target>Najnowsze adresy</target>
+      </trans-unit>
+      <trans-unit id="menu.unpublished">
+        <source>menu.unpublished</source>
+        <target>Nieopublikowane adresy</target>
+      </trans-unit>
+
+       <!-- Login -->
+      <trans-unit id="login.email">
+        <source>login.email</source>
+        <target>E-mail</target>
+      </trans-unit>
+      <trans-unit id="login.please">
+        <source>login.please</source>
+        <target>Zaloguj się</target>
+      </trans-unit>
+      <trans-unit id="login.password">
+        <source>login.password</source>
+        <target>Hasło</target>
+      </trans-unit>
+      <trans-unit id="login.signin">
+        <source>login.signin</source>
+        <target>Zarejestruj się</target>
+      </trans-unit>
+      <trans-unit id="login.loggedInAs">
+        <source>login.loggedInAs</source>
+        <target>Jesteś zalogowany jako {{ username }}</target>
+      </trans-unit>
+      <trans-unit id="login.logout">
+        <source>login.logout</source>
+        <target>Wyloguj się</target>
+      </trans-unit>
+      <trans-unit id="message.formError">
+        <source>message.formError</source>
+        <target>Wystąpiły problemy z formularzem</target>
+      </trans-unit>
+
+      <!-- User -->
+      <trans-unit id="user.delete">
+        <source>user.delete</source>
+        <target>Usuń</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

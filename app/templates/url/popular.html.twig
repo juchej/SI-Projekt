@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.topUrls'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.topUrls'|trans }}</h1>
+    {% if popularUrls is defined %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ 'label.id'|trans}}</th>
+                <th>{{ 'label.createdAt'|trans }}</th>
+                <th>{{ 'label.shortCode'|trans }}</th>
+                <th>{{ 'label.author'|trans }}</th>
+                <th>{{ 'label.tags'|trans }}</th>
+                <th>{{ 'label.clickCount'|trans }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for url in popularUrls %}
+                {% include 'url/_url_row.html.twig' with { url: url } %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <a href="{{ url('url_create') }}" class="btn btn-primary" title="{{ 'action.addNewUrl'|trans }}">
+                {{ 'action.addNewUrl'|trans }}
+            </a>
+        </div>
+
+        <div class="text-center">
+            <canvas id="topUrlsChart" width="400" height="200" style="max-height: 50vh; max-width: 80vw; display: inline-block;"></canvas>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <script> const ctx = document.getElementById('topUrlsChart').getContext('2d'); const topUrlsChart = new Chart(ctx, { type: 'bar', data: { labels: {{ labels|json_encode|raw }}, datasets: [{ label: '{{ 'label.clickCount'|trans }}', data: {{ data|json_encode|raw }}, backgroundColor: 'rgba(54, 162, 235, 0.5)', borderColor: 'rgba(54, 162, 235, 1)', borderWidth: 1 }] }, options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(context) { return context.parsed.y + ' {{ 'label.clickCount'|trans }}'; } } } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 }, title: { display: true, text: '{{ 'label.clickCount'|trans }}' } }, x: { title: { display: true, text: '{{ 'label.shortCode'|trans }}' } } } } }); </script>
+
+    {% else %}
+        <p>
+            {{ 'message.emptyList'|trans }}
+        </p>
+    {% endif %}
+
+{% endblock %}

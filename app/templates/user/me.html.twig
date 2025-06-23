@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.userMe'|trans({'%id%': user.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.userMe'|trans({'%id%': user.id|default('')}) }}</h1>
+
+    <dl class="row">
+        <dt class="col-sm-3">{{ 'label.id'|trans }}</dt>
+        <dd class="col-sm-9">{{ user.id }}</dd>
+
+        <dt class="col-sm-3">{{ 'label.email'|trans }}</dt>
+        <dd class="col-sm-9">{{ user.email }}</dd>
+
+        <dt class="col-sm-3">{{ 'label.username'|trans }}</dt>
+        <dd class="col-sm-9">{{ user.username }}</dd>
+
+        <dt class="col-sm-3">{{ 'label.roles'|trans }}</dt>
+        <dd class="col-sm-9">
+            {% for role in user.roles %}
+                {% if role == 'ROLE_ADMIN' %}
+                    <span class="badge bg-primary">{{ 'label.roleAdmin'|trans }}</span>
+                {% elseif role == 'ROLE_USER' %}
+                    <span class="badge bg-info">{{ 'label.roleUser'|trans }}</span>
+                {% endif %}
+            {% endfor %}
+        </dd>
+    </dl>
+
+    <div class="d-flex justify-content-between mt-4">
+        <div>
+            <a href="{{ path('user_edit_me') }}" class="btn btn-outline-secondary">
+                {{ 'action.edit'|trans }}
+            </a>
+            <a href="{{ path('change_password') }}" class="btn btn-outline-secondary">
+                {{ 'action.changePassword'|trans }}
+            </a>
+        </div>
+        <div>
+            <a href="{{ path('user_index') }}" class="btn btn-link">
+                {{ 'action.backToList'|trans }}
+            </a>
+        </div>
+    </div>
+
+    <h2>{{ 'title.yourUrls'|trans }}</h2>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>{{ 'label.id'|trans }}</th>
+            <th>{{ 'label.createdAt'|trans }}</th>
+            <th>{{ 'label.shortCode'|trans }}</th>
+            <th>{{ 'label.author'|trans }}</th>
+            <th>{{ 'label.tags'|trans }}</th>
+            <th>{{ 'label.clickCount'|trans }}</th>
+            <th>{{ 'label.actions'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for url in urls %}
+            {% include 'url/_url_row.html.twig' with { url: url } %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

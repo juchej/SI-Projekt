@@ -32,6 +32,7 @@ class UrlFixtures extends AbstractBaseFixtures implements DependentFixtureInterf
     {
         return [TagFixtures::class, UserFixtures::class];
     }
+
     /**
      * Load data.
      *
@@ -65,7 +66,7 @@ class UrlFixtures extends AbstractBaseFixtures implements DependentFixtureInterf
 
             // przypisz losowe tagi (1–3)
             $tagCount = $this->faker->numberBetween(1, 3);
-            for ($j = 0; $j < $tagCount; $j++) {
+            for ($j = 0; $j < $tagCount; ++$j) {
                 /** @var Tag $tag */
                 $tag = $this->getRandomReference('tag', Tag::class);
                 $url->addTag($tag);

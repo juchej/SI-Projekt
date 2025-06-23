@@ -57,21 +57,6 @@ class TagService implements TagServiceInterface
             ]
         );
     }
-    public function getPaginatedUrlsForTag(Tag $tag, int $page): PaginationInterface
-    {
-        $query = $tag->getUrls(); // ← to jest Collection, nie QueryBuilder!
-
-        return $this->paginator->paginate(
-            $query, // może być Collection
-            $page,
-            self::PAGINATOR_ITEMS_PER_PAGE,
-            [
-                'sortFieldAllowList' => ['url.id', 'url.createdAt', 'url.updatedAt'],
-                'defaultSortFieldName' => 'url.updatedAt',
-                'defaultSortDirection' => 'desc',
-            ]
-        );
-    }
 
     /**
      * Save entity.
@@ -83,6 +68,11 @@ class TagService implements TagServiceInterface
         $this->tagRepository->save($tag);
     }
 
+    /**
+     * Delete entity.
+     *
+     * @param Tag $tag Tag entity
+     */
     public function delete(Tag $tag): void
     {
         $this->tagRepository->delete($tag);

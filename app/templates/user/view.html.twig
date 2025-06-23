@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.userDetails'|trans({'%id%': user.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.userDetails'|trans({'%id%': user.id|default('')}) }}</h1>
+
+    <dl class="row">
+        <dt class="col-sm-3">{{ 'label.id'|trans }}</dt>
+        <dd class="col-sm-9">{{ user.id }}</dd>
+
+        <dt class="col-sm-3">{{ 'label.email'|trans }}</dt>
+        <dd class="col-sm-9">{{ user.email }}</dd>
+
+        <dt class="col-sm-3">{{ 'label.username'|trans }}</dt>
+        <dd class="col-sm-9">{{ user.username }}</dd>
+
+        <dt class="col-sm-3">{{ 'label.roles'|trans }}</dt>
+        <dd class="col-sm-9">
+            {% for role in user.roles %}
+                {% if role == 'ROLE_ADMIN' %}
+                    <span class="badge bg-primary">{{ 'label.roleAdmin'|trans }}</span>
+                {% elseif role == 'ROLE_USER' %}
+                    <span class="badge bg-info">{{ 'label.roleUser'|trans }}</span>
+                {% endif %}
+            {% endfor %}
+        </dd>
+        <dt class="col-sm-3">{{ 'label.accountStatus'|trans }}</dt>
+        <dd class="col-sm-9">
+            {% if user.isBlocked %}
+                <span class="badge bg-danger">{{ 'label.blocked'|trans }}</span>
+            {% else %}
+                <span class="badge bg-success">{{ 'label.active'|trans }}</span>
+            {% endif %}
+    </dl>
+
+    <div class="d-flex justify-content-between mt-4">
+        <div>
+            <a href="{{ path('user_edit', {id: user.id}) }}" class="btn btn-outline-secondary">
+                {{ 'action.edit'|trans }}
+            </a>
+            <a href="{{ path('user_change_password', {id: user.id}) }}" class="btn btn-outline-secondary">
+                {{ 'action.changePassword'|trans }}
+            </a>
+            {% if is_granted('USER_BLOCK', user) %}
+                {% if user.isBlocked %}
+                    <a href="{{ path('user_unblock', {id: user.id}) }}" class="btn btn-outline-success">
+                        {{ 'action.unblock'|trans }}
+                    </a>
+                {% else %}
+                    <a href="{{ path('user_block', {id: user.id}) }}" class="btn btn-outline-danger">
+                        {{ 'action.block'|trans }}
+                    </a>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div>
+            <a href="{{ path('user_index') }}" class="btn btn-link">
+                {{ 'action.backToList'|trans }}
+            </a>
+        </div>
+    </div>
+{% endblock %}

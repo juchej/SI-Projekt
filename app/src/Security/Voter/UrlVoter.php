@@ -38,6 +38,13 @@ final class UrlVoter extends Voter
     public const VIEW = 'URL_VIEW';
 
     /**
+     * Block permission.
+     *
+     * @const string
+     */
+    public const BLOCK = 'URL_BLOCK';
+
+    /**
      * Determines if the attribute and subject are supported by this voter.
      *
      * @param string $attribute An attribute
@@ -47,7 +54,7 @@ final class UrlVoter extends Voter
      */
     protected function supports(string $attribute, mixed $subject): bool
     {
-        return in_array($attribute, [self::DELETE, self::EDIT, self::VIEW])
+        return in_array($attribute, [self::DELETE, self::EDIT, self::VIEW, self::BLOCK])
             && $subject instanceof Url;
     }
 
@@ -75,6 +82,7 @@ final class UrlVoter extends Voter
             self::EDIT => $this->canEdit($subject, $user),
             self::DELETE => $this->canDelete($subject, $user),
             self::VIEW => $this->canView($subject, $user),
+            self::BLOCK => $this->canBlock($subject, $user),
             default => false,
         };
     }
@@ -89,7 +97,7 @@ final class UrlVoter extends Voter
      */
     private function canDelete(Url $url, UserInterface $user): bool
     {
-        return $url->getAuthor() === $user;
+        return ($url->getAuthor() === $user && 0 === $url->getClickCount()) || in_array('ROLE_ADMIN', $user->getRoles(), true);
     }
 
     /**
@@ -102,7 +110,7 @@ final class UrlVoter extends Voter
      */
     private function canEdit(Url $url, UserInterface $user): bool
     {
-        return $url->getAuthor() === $user;
+        return ($url->getAuthor() === $user && 0 === $url->getClickCount()) || in_array('ROLE_ADMIN', $user->getRoles(), true);
     }
 
     /**
@@ -116,5 +124,18 @@ final class UrlVoter extends Voter
     private function canView(Url $url, UserInterface $user): bool
     {
         return true;
+    }
+
+    /**
+     * Checks if user can block url.
+     *
+     * @param Url           $url  Url entity
+     * @param UserInterface $user User
+     *
+     * @return bool Result
+     */
+    private function canBlock(Url $url, UserInterface $user): bool
+    {
+        return in_array('ROLE_ADMIN', $user->getRoles(), true);
     }
 }

@@ -7,29 +7,68 @@
 {% block body %}
     <h1>{{ 'title.urlDetails'|trans({'%id%': url.id|default('')}) }}</h1>
     {% if url is defined and url|length %}
-        <dl class="dl-horizontal">
-            <dt>{{ 'label.id'|trans }}</dt>
-            <dd>{{ url.id }}</dd>
-            <dt>{{ 'label.createdAt'|trans }}</dt>
-            <td>{{ url.createdAt|format_date('long') }}</td>
-            <dt>{{ 'label.updatedAt'|trans }}</dt>
-            <td>{{ url.updatedAt|format_date('long') }}</td>
-            <dt>{{ 'label.originalUrl'|trans }}</dt>
-            <td><a href="{{ url.originalUrl }}">{{ url.originalUrl }}</a></td>
-            <dt>{{ 'label.shortCode'|trans }}</dt>
-            <td>{{ url.shortCode }}</td>
-            <dt>{{ 'label.tags'|trans }}</dt>
-            <dd>{% for tag in url.tags %}
+        <dl class="row">
+            <dt class="col-sm-2">{{ 'label.id'|trans }}</dt>
+            <dd class="col-sm-9">{{ url.id }}</dd>
+            <dt class="col-sm-2">{{ 'label.createdAt'|trans }}</dt>
+            <dd class="col-sm-9">{{ url.createdAt|format_date('long') }}</dd>
+            <dt class="col-sm-2">{{ 'label.updatedAt'|trans }}</dt>
+            <dd class="col-sm-9">{{ url.updatedAt|format_date('long') }}</dd>
+            <dt class="col-sm-2">{{ 'label.originalUrl'|trans }}</dt>
+            <dd class="col-sm-9">
+            {% if url.isBlocked and url.blockedUntil|date('Y-m-d H:i') != '9999-12-31 23:59' %}
+                <span class="badge bg-danger">{{ 'label.blockedUntil'|trans }}: {{ url.blockedUntil|date('Y-m-d H:i') }}</span>
+            {% elseif url.isBlocked and url.blockedUntil|date('Y-m-d H:i') == '9999-12-31 23:59' %}
+                <span class="badge bg-danger">{{ 'label.permanentlyBlocked'|trans }}</span>
+            {% else %}
+                <a href="{{ url.originalUrl }}">{{ url.originalUrl }}</a></dd>
+            {% endif %}
+            <dt class="col-sm-2">{{ 'label.shortCode'|trans }}</dt>
+            <dd class="col-sm-9"><a target="_blank" href="{{ url('url_redirect', {shortCode: url.shortCode}) }}">{{ url.shortCode }}</a></dd>
+            <dt class="col-sm-2">{{ 'label.author'|trans }}</dt>
+            <dd class="col-sm-9">
+                    {% if url.author %}
+                        {{ url.author.username }}
+                    {% else %}
+                        {{ 'label.anonymousUser'|trans }}
+                    {% endif %}
+            </dd>
+            <dt class="col-sm-2">{{ 'label.tags'|trans }}</dt>
+            <dd class="col-sm-9">{% for tag in url.tags %}
                 <a href="{{ url('tag_view', {id: tag.id}) }}" title="{{ 'action.view'|trans }}">
-                    {{ tag.title }}
-                    </a>{% if not loop.last %}, {% endif %}
+                    {{ tag.title }}</a>{% if not loop.last %}, {% endif %}
                 {% endfor %}</dd>
+            <dt class="col-sm-2">{{ 'label.clickCount'|trans }}</dt>
+            <dd class="col-sm-9">{{ url.clickCount }}</dd>
         </dl>
-        <p>
-            <a href="{{ url('url_index') }}" title="{{ 'action.back_to_list'|trans }}">
-                {{ 'action.backToList'|trans }}
-            </a>
-        </p>
+        <div class="d-flex justify-content-between mb-4">
+            <div>
+                {% if is_granted('URL_EDIT', url) %}
+                    <a href="{{ path('url_edit', {id: url.id}) }}" class="btn btn-outline-secondary me-2">
+                        {{ 'action.edit'|trans }}
+                    </a>
+                {% endif %}
+                {% if is_granted('URL_DELETE', url) %}
+                    <a href="{{ path('url_delete', {id: url.id}) }}" class="btn btn-outline-danger me-2">
+                        {{ 'action.delete'|trans }}
+                    </a>
+                {% endif %}
+                {% if is_granted('URL_BLOCK', url) %}
+                    {% if url.isBlocked %}
+                        <a href="{{ url('url_unblock', {id: url.id}) }}" class="btn btn-outline-success" title="{{ 'action.unblock'|trans }}">
+                            {{ 'action.unblock'|trans }}
+                        </a>
+                    {% else %}
+                        <a href="{{ url('url_block', {id: url.id}) }}" class="btn btn-outline-danger" title="{{ 'action.block'|trans }}">
+                            {{ 'action.block'|trans }}
+                        </a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <a href="{{ url('url_index') }}" title="{{ 'action.backToList'|trans }}">
+            {{ 'action.backToList'|trans }}
+        </a>
     {% else %}
         <p>
             {{ 'message.recordNotFound'|trans }}

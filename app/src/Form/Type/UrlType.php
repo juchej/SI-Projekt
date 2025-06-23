@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Url type.
  */
@@ -6,13 +7,12 @@
 namespace App\Form\Type;
 
 use App\Entity\Url;
-use App\Entity\Tag;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
  * Class UrlType.
@@ -27,6 +27,7 @@ class UrlType extends AbstractType
     public function __construct(private readonly TagsDataTransformer $tagsDataTransformer)
     {
     }
+
     /**
      * Builds the form.
      *
@@ -41,23 +42,36 @@ class UrlType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('originalUrl', TextType::class, [
-                'label' => 'label.originalUrl',
-                'required' => true,
-                'attr' => ['max_length' => 2048],
+            'label' => 'label.originalUrl',
+            'required' => true,
+            'attr' => ['max_length' => 2048],
         ]);
         $builder->add('shortCode', TextType::class, [
-                'label' => 'label.shortCode',
-                'required' => false,
+            'label' => 'label.shortCode',
+            'required' => false,
         ]);
-            $builder->add(
-                'tags',
-                TextType::class,
-                [
-                    'label' => 'label.tags',
-                    'required' => false,
-                    'attr' => ['max_length' => 128],
-                ]
-            );
+        $builder->add(
+            'tags',
+            TextType::class,
+            [
+                'label' => 'label.tags',
+                'required' => false,
+                'attr' => ['max_length' => 128],
+            ]
+        );
+        if ($options['is_authenticated']) {
+            $builder->add('isPublished', CheckboxType::class, [
+                'label' => 'label.isPublished',
+                'required' => false,
+            ]);
+        }
+
+        if (!$options['is_authenticated']) {
+            $builder->add('authorEmail', TextType::class, [
+                'label' => 'label.email',
+                'required' => true,
+            ]);
+        }
 
         $builder->get('tags')->addModelTransformer(
             $this->tagsDataTransformer
@@ -71,7 +85,7 @@ class UrlType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Url::class]);
+        $resolver->setDefaults(['data_class' => Url::class, 'is_authenticated' => false]);
     }
 
     /**

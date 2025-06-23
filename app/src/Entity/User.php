@@ -9,6 +9,7 @@ namespace App\Entity;
 use App\Entity\Enum\UserRole;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -19,6 +20,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'users')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[UniqueEntity(fields: ['email'], message: 'message.emailUsed')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
@@ -31,13 +33,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Email.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\NotBlank]
     #[Assert\Email]
     private ?string $email = null;
+
+    /**
+     * Username.
+     */
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 180)]
+    private ?string $username = null;
 
     /**
      * Roles.
@@ -49,12 +57,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Hashed password.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank]
     private ?string $password = null;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $isBlocked = false;
 
     /**
      * Getter for id.
@@ -89,8 +97,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * A visual identifier that represents this user.
      *
-     * @see UserInterface
-     *
      * @return string User identifier
      */
     public function getUserIdentifier(): string
@@ -99,9 +105,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Getter for roles.
+     * Getter for username.
      *
-     * @see UserInterface
+     * @return string|null Username
+     */
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    /**
+     * Setter for username.
+     *
+     * @param string $username Username
+     */
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * Getter for roles.
      *
      * @return list<string>
      */
@@ -147,13 +171,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * Removes sensitive information from the token.
+     * Getter for isBlocked.
      *
-     * @see UserInterface
+     * @return bool isBlocked
+     */
+    public function getIsBlocked(): bool
+    {
+        return $this->isBlocked;
+    }
+
+    /**
+     * Setter for isBlocked.
+     *
+     * @param bool $isBlocked isBlocked
+     *
+     * @return static returns the current instance for method chaining
+     */
+    public function setIsBlocked(bool $isBlocked): static
+    {
+        $this->isBlocked = $isBlocked;
+
+        return $this;
+    }
+
+    /**
+     * Removes sensitive information from the token.
      */
     public function eraseCredentials(): void
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
 }
