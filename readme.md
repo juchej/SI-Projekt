@@ -19,7 +19,7 @@
    composer install
    ```
    
-4. Skonfiguruj plik `.env`, ustawiając dane do bazy danych i inne ustawienia:
+4. Skonfiguruj plik `.env`, ustawiając dane do bazy danych:
 
    ```bash
    DATABASE_URL="mysql://nazwa_uzytkownika:haslo@host:port/nazwa_bazy?serverVersion=8.0"
